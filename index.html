@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Wisuda</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        .invitation-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            font-family: sans-serif;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #6a1b9a;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .photo {
+            text-align: center;
+            padding: 20px;
+        }
+        .photo img {
+            width: 150px;
+            border-radius: 25%;
+            border: 5px solid #6a1b9a;
+        }
+        .details {
+            padding: 20px;
+            color: #black;
+            line-height: 1.6;
+        }
+        .details h2 {
+            color: #black;
+            margin-bottom: 10px;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .countdown-box {
+            width: 60px;
+            padding: 10px;
+            background-color: #fff;
+            border: 2px solid #6a1b9a;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000;
+        }
+        .footer {
+            background-color: #6a1b9a;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 0 0 15px 15px;
+        }
+        .label {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6a1b9a;
+    margin-top: 5px;
+}
+    </style>
+</head>
+<body>
+    <div class="invitation-container">
+        <div class="header">
+            <h1>Undangan Wisuda</h1>
+        </div>
+        <div class="photo">
+            <img src="fotoia.jpg" alt="Foto Wisudawan">
+        </div>
+        <div class="details">
+            <center><h2>Arham Fauzi, S.Kom</h2></center> 
+            <p>Dengan hormat,</p>
+            <p>Kami mengundang Anda untuk menghadiri acara wisuda yang akan diselenggarakan pada:</p>
+            <p><strong>Waktu:</strong> 5 November 2024</p>
+            <p><strong>Jam :</strong> 12.00 s/d Selesai</p>
+            <p><strong>Tempat:</strong> UPI EXIBITHION HALL Lubuk Begalung</p> <br>
+            <p>Merupakan kebanggaan bagi kami untuk berbagi momen ini bersama Anda.</p>
+            <p>Mohon konfirmasi sebelum kedatangan</p>
+        </div>
+        <div class="countdown" id="countdown">
+            <div>
+                <div class="countdown-box" id="days">--</div>
+                <div class="label">Hari</div>
+            </div>
+            <div>
+                <div class="countdown-box" id="hours">--</div>
+                <div class="label">Jam</div>
+            </div>
+            <div>
+                <div class="countdown-box" id="minutes">--</div>
+                <div class="label">Menit</div>
+            </div>
+            <div>
+                <div class="countdown-box" id="seconds">--</div>
+                <div class="label">Detik</div>
+            </div>
+        </div>
+        <br>
+        <div class="footer">
+            <p>Terima kasih atas kehadiran dan dukungannya.</p>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const eventDate = new Date('2024-11-05T12:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
+
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days;
+                document.getElementById('hours').innerText = hours;
+                document.getElementById('minutes').innerText = minutes;
+                document.getElementById('seconds').innerText = seconds;
+            } else {
+                document.getElementById('countdown').innerHTML = "<p>Acara telah dimulai!</p>";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
